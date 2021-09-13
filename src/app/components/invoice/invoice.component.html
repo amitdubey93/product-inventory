@@ -1,0 +1,94 @@
+<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="mb-3">
+      <label for="customerName" class="form-label">Cusomer Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="customerName"
+        [ngClass]="{ 'is-invalid': submitted && f.customerName.errors }"
+      />
+    </div>
+  </div>
+  <!--  <div class="row">
+      <div>#</div>
+      <div>Product Name</div>
+      <div>Price</div>
+      <div>Quantity</div>
+  </div>
+  <div class="row" formArrayName="products">
+    <div *ngFor="let product of invoiceForm.controls.products.value; let i = index" [formGroupName]='i'>
+      <div>
+        {{i}}
+      </div>
+      <div>
+        <input type="text" class="form-control" formControlName="productName" />
+      </div>
+      <div>
+        <input type="text" class="form-control" formControlName="price" />
+      </div>
+      <div>
+        <input type="text" class="form-control" formControlName="quantity" />
+      </div>
+    </div>
+  </div> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody formArrayName="products">
+      <tr
+        *ngFor="
+          let product of invoiceForm.controls.products.value;
+          let i = index
+        "
+        [formGroupName]="i"
+      >
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="productName"
+          />
+        </td>
+        <td>
+          <input type="text" class="form-control" formControlName="price" />
+        </td>
+        <td>
+          <input type="text" class="form-control" formControlName="quantity" />
+        </td>
+        <td>
+          <button (click)="removeItem(i)" class="btn btn-outline-danger">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="addNewItem()" class="btn btn-success mt-3">Add Row</button>
+  <button type="submit" class="btn btn-primary mt-3 mx-2">Submit</button>
+</form>
+<p>Form value: {{ invoiceForm.value | json }}</p>
+<!-- <p>Form value: {{ invoiceForm.controls.products.value | json }}</p> -->
+<p>Form status: {{ invoiceForm.status | json }}</p>
+
+<!-- <td>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="productName"
+            [(ngModel)]="model"
+            [ngbTypeahead]="search"
+            (focus)="focus$.next($any($event).target.value)"
+            (click)="click$.next($any($event).target.value)"
+            #instance="ngbTypeahead"
+          />
+        </td> -->

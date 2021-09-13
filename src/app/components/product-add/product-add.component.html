@@ -1,0 +1,51 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="productName" class="form-label">Product Name</label>
+    <input type="text" class="form-control" formControlName="productName" [ngClass]="{ 'is-invalid': submitted && f.productName.errors }"/>
+    <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
+      <div *ngIf="f.productName.errors.required">FirstName is required</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="text" class="form-control" formControlName="quantity" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"/>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="text" class="form-control" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }"/>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- <p>Form value: {{ productForm.value | json }}</p>
+<p>Form status: {{ productForm.status | json }}</p> -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+      <td>@<input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2"><input type="text" class="form-control"></td>
+      <td><input type="text" class="form-control"></td>
+    </tr>
+  </tbody>
+</table>
