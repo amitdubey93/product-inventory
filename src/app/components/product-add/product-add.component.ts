@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -9,8 +10,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProductAddComponent implements OnInit {
   productForm!: FormGroup;
-  submitted:boolean=false;
-  constructor(private formBuilder:FormBuilder, private apiService:ApiService) { }
+  //submitted:boolean=false;
+  constructor(private formBuilder:FormBuilder, private apiService:ApiService, private router:Router) { }
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -23,13 +24,19 @@ export class ProductAddComponent implements OnInit {
     return this.productForm.controls;
   }
   onSubmit(){
-    this.submitted = true;
+    //this.submitted = true;
+    //alert();
     if (this.productForm.invalid) {
       return;
     }
     this.apiService.addProduct(this.productForm.value).subscribe(
       (res:any)=>{
         console.log('res',res);
+        //this.submitted=false; 
+        
+        //this.productForm.reset();
+        this.router.navigate(['productlist']);
+        //this.productForm.valid;
         
       },(error:any)=>{
         console.log("error",error);

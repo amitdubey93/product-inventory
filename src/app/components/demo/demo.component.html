@@ -1,0 +1,75 @@
+<!-- <form action="" [formGroup]="form">
+  <div class="row">
+    <div class="col-4">
+      <label for="customerName" class="form-label">Customer Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="customerName"
+        id="customerName"
+      />
+    </div>
+    <div class="col-4">
+      <label for="phone" class="form-label">Phone No.</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="phone"
+        id="phone"
+      />
+    </div>
+    <div class="col-4">
+        <input type="button" value="Add" (click)="addNewProduct()">
+    </div>
+  </div>
+  <div formArrayName="products">
+    <div
+      class="row"
+      *ngFor="let product of productsArray.value; let i = index;trackBy:trackByIndex"
+      [formGroupName]="i"
+    >
+      <div class="col-4">
+        <label for="productName" class="form-label">Product Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="productName"
+          id="productName"
+        />
+      </div>
+      <div class="col-4">
+        <label for="price" class="form-label">Product Price</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="price"
+          id="price"
+        />
+      </div>
+    </div>
+  </div>
+  
+</form>
+ -->
+<h1>{{name}}</h1>
+<p>
+  This is a simple example of working with FormArrays and calculated fields
+</p>
+<form [formGroup]="frm">
+  <label for="total">Sum:</label>
+  <input formControlName="total">
+  <label for="mean">Mean:</label>
+  <input formControlName="mean">
+  <label for="wgtAvg">Weighted Average:</label>
+  <input formControlName="wgtAvg">
+<button (click)="newRow()">Add a New Row</button>
+  <div formArrayName="arr">
+    <div *ngFor="let row of frm.controls.arr.value; let i = index;trackBy: trackByIndex" [formGroupName]="i">
+      <label for="quantity">Qty:</label>
+      <input formControlName="quantity">
+      <label for="value">Val</label>
+      <input formControlName="value">
+      <button (click)="removeRow(i)">Delete Me</button>
+    </div>
+  </div>
+</form>

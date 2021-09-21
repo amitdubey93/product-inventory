@@ -1,81 +1,123 @@
-<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="mb-3">
-      <label for="customerName" class="form-label">Cusomer Name</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="customerName"
-        [ngClass]="{ 'is-invalid': submitted && f.customerName.errors }"
-      />
-    </div>
-  </div>
-  <!--  <div class="row">
-      <div>#</div>
-      <div>Product Name</div>
-      <div>Price</div>
-      <div>Quantity</div>
-  </div>
-  <div class="row" formArrayName="products">
-    <div *ngFor="let product of invoiceForm.controls.products.value; let i = index" [formGroupName]='i'>
-      <div>
-        {{i}}
-      </div>
-      <div>
-        <input type="text" class="form-control" formControlName="productName" />
-      </div>
-      <div>
-        <input type="text" class="form-control" formControlName="price" />
-      </div>
-      <div>
-        <input type="text" class="form-control" formControlName="quantity" />
+<div>
+  <form [formGroup]="invoiceForm">
+    <div class="row">
+      <div class="mb-3">
+        <label for="customerName" class="form-label">Cusomer Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="customerName"
+          required
+        />
       </div>
     </div>
-  </div> -->
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody formArrayName="products">
-      <tr
-        *ngFor="
-          let product of invoiceForm.controls.products.value;
-          let i = index
-        "
-        [formGroupName]="i"
-      >
-        <th scope="row">{{ i + 1 }}</th>
-        <td>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="productName"
-          />
-        </td>
-        <td>
-          <input type="text" class="form-control" formControlName="price" />
-        </td>
-        <td>
-          <input type="text" class="form-control" formControlName="quantity" />
-        </td>
-        <td>
-          <button (click)="removeItem(i)" class="btn btn-outline-danger">
-            Remove
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <button (click)="addNewItem()" class="btn btn-success mt-3">Add Row</button>
-  <button type="submit" class="btn btn-primary mt-3 mx-2">Submit</button>
-</form>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody formArrayName="products">
+        <tr
+          *ngFor="
+            let product of invoiceForm.controls.products.value;
+            let i = index;
+            trackBy: trackByIndex
+          "
+          [formGroupName]="i"
+        >
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <input matInput formControlName="productName" />
+          </td>
+          <td>
+            <input matInput formControlName="price" (keyup)="calc(i)" />
+          </td>
+          <td>
+            <input matInput formControlName="quantity"  (keyup)="calc(i)"/>
+          </td>
+          <td>
+            <input matInput formControlName="subtotal" (keyup)="calc(i)"/>
+          </td>
+          <td>
+            <img
+              src="/assets/img/add.svg"
+              alt=""
+              width="24"
+              height="24"
+              (click)="addNewProduct()"
+            />
+            <img
+              src="/assets/img/remove.svg"
+              alt=""
+              width="24"
+              height="24"
+              (click)="removeProduct(i)"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><input matInput formControlName="total" readonly [ngModel]="total"></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <div class="divTable blueTable">
+      <div class="divTableHeading">
+        <div class="divTableRow">
+          <div class="divTableHead">#</div>
+          <div class="divTableHead">Product Name</div>
+          <div class="divTableHead">Price</div>
+          <div class="divTableHead">Quantity</div>
+          <div class="divTableHead">Total</div>
+          <div class="divTableHead">Action</div>
+        </div>
+      </div>
+      <div class="divTableBody" formArrayName="products">
+        <div class="divTableRow" *ngFor="let product of productsArray.value; let i = index;trackBy:trackByIndex" [formGroupName]="i">
+          <div class="divTableCell">{{i+1}}</div>
+          <div class="divTableCell"><input type="text" class="form-control" formControlName="productName" /></div>
+          <div class="divTableCell"><input type="text" class="form-control" formControlName="price" /></div>
+          <div class="divTableCell"><input type="text" class="form-control" formControlName="quantity" /></div>
+          <div class="divTableCell"><input type="text" class="form-control" formControlName="subtotal" /></div>
+          <div class="divTableCell">
+            <img src="/assets/img/add.svg" alt="" width="24" height="24" (click)="addNewProduct()">
+            <img src="/assets/img/remove.svg" alt="" width="24" height="24" (click)="removeProduct(i)">
+          </div>
+        </div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"></div>
+        <div class="divTableCell"></div>
+        <div class="divTableCell"></div>
+        <div class="divTableCell"></div>
+        <div class="divTableCell"><span>Total:</span><input type="text" class="form-control" formControlName="total" /></div>
+        <div class="divTableCell"></div>
+      </div>
+    </div> -->
+    <button
+      type="submit"
+      class="btn btn-primary mt-3 mx-2"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
 <p>Form value: {{ invoiceForm.value | json }}</p>
 <!-- <p>Form value: {{ invoiceForm.controls.products.value | json }}</p> -->
 <p>Form status: {{ invoiceForm.status | json }}</p>

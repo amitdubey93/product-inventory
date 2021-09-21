@@ -10,7 +10,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RowDirective } from './directives/row.directive';
+import { DemoComponent } from './components/demo/demo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +23,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     ProductAddComponent,
     InvoiceComponent,
+    RowDirective,
+    DemoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,ReactiveFormsModule, NgbModule ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
