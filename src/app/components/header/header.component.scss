@@ -1,8 +1,14 @@
+$base-color: #4ac73c;
+
 a{
   padding: 10px;
   text-decoration: none;
-  color:white;
+  // color:#4ac73c;
   font-size: medium;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $base-color;
 }
 a:hover{
   color:#60ff0eb8;
@@ -10,4 +16,8 @@ a:hover{
 
 .navbar{
   justify-content: space-between;
+}
+header{
+  color: white;
+  margin-bottom: 2rem;
 }

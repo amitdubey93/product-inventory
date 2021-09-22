@@ -1,0 +1,11 @@
+/* @mixin alert-theme($theme) {
+  $primary: map-get($theme, $primary);
+  $accent: map-get($theme, $accent);
+
+  .my-alert{
+      background-color:  mat-color($accent, 50);
+      color: mat-color($accent, 900);
+      border-color: mat-colr($primary, 100);
+  }
+}
+ */

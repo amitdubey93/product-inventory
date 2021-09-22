@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,8 +11,10 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProductAddComponent implements OnInit {
   productForm!: FormGroup;
+  //private service!:Subscription;
   //submitted:boolean=false;
   constructor(private formBuilder:FormBuilder, private apiService:ApiService, private router:Router) { }
+  
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -29,6 +32,7 @@ export class ProductAddComponent implements OnInit {
     if (this.productForm.invalid) {
       return;
     }
+    // this.service = 
     this.apiService.addProduct(this.productForm.value).subscribe(
       (res:any)=>{
         console.log('res',res);
@@ -42,5 +46,9 @@ export class ProductAddComponent implements OnInit {
         console.log("error",error);
       })
   }
+  /* ngOnDestroy(): void {
+    this.service.unsubscribe();
+  } */
+
 
 }

@@ -46,7 +46,7 @@ export class InvoiceComponent implements OnInit {
     },
   ];
 
-  productNameOp = new FormControl('', Validators.required);
+  //productNameOp = new FormControl('', Validators.required);
   constructor(
     private _fb: FormBuilder,
     private ref: ChangeDetectorRef,
@@ -55,64 +55,30 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.invoiceForm = this._fb.group({
-      customerName: [''],
+      customerName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(7)]],
       products: this._fb.array([
         this.addProductGroup(),
         this.addProductGroup(),
       ]),
       total: [''],
     });
-    //this.getAllProducts();
-    this.filteredProductNames = this.productNameOp.valueChanges.pipe(
-      startWith(''),
-      //map((value) => this._filter(value.toString()))
-        map(value => typeof value === 'string' ? value : value.productName),
-        map(name => name ? this._filter(name) : this.productList.slice())
-        //map(value => this._filter(value))
-    );
+    
     //this.invoiceForm.valueChanges.subscribe(console.log);
     this.invoiceForm.get('products')?.valueChanges.subscribe((values) => {
       this.total = 0;
       const ctrl = <FormArray>this.invoiceForm.controls['products'];
       ctrl.controls.forEach((x) => {
-        /* let price1 = parseInt(x.get('price')?.value);
-          let quantity1 = parseInt(x.get('quantity')?.value);
-          let x1 = price1 * quantity1;
-          console.log("x1",x1);
-          
-          x.get('subtotal')?.setValue(x1); */
-        //console.log("hello");
-        //x.get('subtotal')?.setValue(111);
         let parsed = parseFloat(
           x.get('subtotal')?.value === '' ? 0 : x.get('subtotal')?.value
         );
         this.total += parsed;
+        this.invoiceForm.controls.total.setValue(this.total);
         this.ref.detectChanges();
       });
     });
-    /* this.invoiceForm.get('products')?.valueChanges.subscribe(values => {
-        resolvedPromise.then(() => {
-          this.total = values.reduce((acc: number, cur: { subtotal: number | string; }) => acc + (+cur.subtotal), 0);
-        });
-      }) */
   }
-  displayFn(product: Product): string {
-    return product && product.productName ? product.productName : '';
-  }
-
-  private _filter(productName: string): Product[] {
-    const filterValue = productName.toLowerCase();
-
-    return this.productList.filter((option) =>
-      option.productName.toLowerCase().includes(filterValue)
-    );
-  }
-  /* private _filter(value: string, key: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.orderServices.filter((option) =>
-        option.toLowerCase().includes(filterValue)
-      );
-  } */
+  
+ 
   calc(i: string | number) {
     //console.log("price",this.invoiceForm.value.products[i].price);
     //console.log("quantity",this.invoiceForm.value.products[i].quantity);
@@ -134,6 +100,7 @@ export class InvoiceComponent implements OnInit {
       subtotal: [''],
     });
   }
+  
   trackByIndex(index: number, value: string) {
     return index;
   }
@@ -175,19 +142,6 @@ export class InvoiceComponent implements OnInit {
     return <FormArray>this.invoiceForm.controls['products'];
     //return <FormArray>this.invoiceForm.get('products');
   }
-  getAllProducts() {
-    this.api.getAllProducts().subscribe(
-      (products) => {
-        this.productList = products;
-        console.log(products);
-      }
-      /* ((res:any)=>{
-       console.log(res);
-       this.products = res;
-     }),
-     ((error:any)=>{
-       console.log("err",error.message);
-     }) */
-    );
-  }
+  
+  
 }

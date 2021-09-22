@@ -3,5 +3,71 @@
 /* Importing Bootstrap SCSS file. */
 //@import '~bootstrap/scss/bootstrap';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Importing Bootstrap SCSS file. */
+
+
+
+
+/// bootstrap setup
+@import "~bootstrap/scss/bootstrap";
+// // @import "my-variables";
+
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/utilities";
+
+// // @import "my-reset";
+
+
+// // setup angular material
+// @import "~@angular/material/theming";
+// // @include mat-core($my-typography);
+// // $my-theme: mat-light-theme($primary, $accent, $warn);
+// // @include angular-material-theme($my-theme);
+
+
+
+// @mixin generate-utilities($theme){
+//   $primary: map-get($theme, primary);
+//   $accent: map-get($theme, accent);
+
+//   .my-text-secondary-900{
+//     color: mat-color($secondary, 900);
+//   }
+//   .my-border-primary-100{
+//     border-color: mat-colr($primary, 100);
+//   }
+//   // .my-bg-secondary-50{
+//   //   background-color: mat-color($accent, 50);
+//   // }
+// }
+
+
+// // step no 3 ... my-alert.component.theme.scss
+// @mixin alert-theme($theme) {
+//   $primary: map-get($theme, primary);
+//   $accent: map-get($theme, accent);
+
+  
+// }
+
+// // step no 4 
+// .my-alert {
+//   // @include alert-theme($my-theme);
+//   background-color: mat-color($accent, 50);
+//   color: mat-color($accent, 900);
+//   border-color: mat-colr($primary, 100);
+// }

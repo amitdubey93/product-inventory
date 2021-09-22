@@ -14,6 +14,8 @@ import { RowDirective } from './directives/row.directive';
 import { DemoComponent } from './components/demo/demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyAlertComponent } from './components/my-alert/my-alert.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { MaterialModule } from './material/material.module';
     InvoiceComponent,
     RowDirective,
     DemoComponent,
+    MyAlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

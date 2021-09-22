@@ -1,5 +1,37 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <!-- <div class="mb-3">
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="productName" required>
+    <mat-error *ngIf="f.productName.errors">
+      Product Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Quantity</mat-label>
+    <input matInput formControlName="quantity" required>
+    <mat-error *ngIf="f.quantity.errors">
+      Quantity is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" required>
+    <mat-error *ngIf="f.price.errors">
+      Price is required
+    </mat-error>
+  </mat-form-field>
+  
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>
+
+<!-- <p>Form value: {{ productForm.value | json }}</p>
+<p>Form status: {{ productForm.status | json }}</p> -->
+
+
+<!-- <div class="mb-3">
     <label for="productName" class="form-label">Product Name</label>
     <input type="text" class="form-control" formControlName="productName" [ngClass]="{ 'is-invalid': submitted && f.productName.errors }"/>
     <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
@@ -14,33 +46,3 @@
     <label for="price" class="form-label">Price</label>
     <input type="text" class="form-control" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }"/>
   </div> -->
-  <mat-form-field appearance="outline">
-    <mat-label>Product Name</mat-label>
-    <input matInput formControlName="productName">
-    <mat-error *ngIf="f.productName.errors">
-      Product Name is required
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Quantity</mat-label>
-    <input matInput formControlName="quantity">
-    <mat-error *ngIf="f.quantity.errors">
-      Quantity is required
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Price</mat-label>
-    <input matInput formControlName="price">
-    <mat-error *ngIf="f.price.errors">
-      Price is required
-    </mat-error>
-  </mat-form-field>
-  
-  <button type="submit" mat-raised-button color="primary">Submit</button>
-</form>
-
-<!-- <p>Form value: {{ productForm.value | json }}</p>
-<p>Form status: {{ productForm.status | json }}</p> -->
-
