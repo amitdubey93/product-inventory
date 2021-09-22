@@ -35,7 +35,20 @@
         >
           <th scope="row">{{ i + 1 }}</th>
           <td>
-            <input matInput formControlName="productName" />
+            <input type="text"
+            placeholder="Pick one"
+            aria-label="Product Name"
+            matInput
+            [matAutocomplete]="auto"
+            formControlName="productName"
+            [value]="productNameOp"
+            
+             />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredProductNames | async" [value]="option.productName">
+                {{option.productName}}
+              </mat-option>
+            </mat-autocomplete>
           </td>
           <td>
             <input matInput formControlName="price" (keyup)="calc(i)" />

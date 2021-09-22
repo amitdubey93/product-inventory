@@ -6,7 +6,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const material = [
   MatToolbarModule,
@@ -16,7 +17,8 @@ const material = [
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({
