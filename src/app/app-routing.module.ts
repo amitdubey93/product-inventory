@@ -7,7 +7,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
 import { ProductListComponent } from './components/product-list/product-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'invoice', pathMatch: 'full' },
+  { path: '', redirectTo: 'alert', pathMatch: 'full' },
   { path: 'demo', component: DemoComponent },
   { path: 'invoice', component: InvoiceComponent },
   { path: 'productlist', component: ProductListComponent },

@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importing Bootstrap SCSS file. */
-//@import '~bootstrap/scss/bootstrap';
-
 html,
 body {
   height: 100%;
@@ -12,13 +9,38 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* Importing Bootstrap SCSS file. */
+
+//bootstrap setup
+@import "~bootstrap/scss/bootstrap";
+
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Your variable overrides
+$body-bg: gainsboro;
+/* $theme-colors: (
+  "primary": #f12222,
+  "success": #e9eef3,
+  "danger": #35b927
+); */
+
+// Bootstrap and its default variables
+
+// Optional
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+// etc
+
+
 
 
 
 
 /// bootstrap setup
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";
 // // @import "my-variables";
 
 // @import "~bootstrap/scss/functions";

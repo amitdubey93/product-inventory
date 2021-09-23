@@ -12,4 +12,20 @@ export class MyAlertComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  currentRate =1;
+
+  time = {hour: 0, minute: 0};
+  meridian = false;
+
+  toggleMeridian() {
+      this.meridian = !this.meridian;
+  }
+
+  show = true;
+
+  close() {
+    this.show = false;
+    setTimeout(() => this.show = true, 3000);
+  }
 }

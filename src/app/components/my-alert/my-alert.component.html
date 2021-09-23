@@ -4,9 +4,100 @@
   temporibus non modi nostrum facilis labore perspiciatis hic. Recusandae, ullam
   reprehenderit.
 </div>
-<div class="border m-4 p-4 font-weight-bold">
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolor excepturi
+<hr>
+
+
+<div class="d-flex">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex">
+  <div class="mr-auto p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="ml-auto p-2">Flex item</div>
+</div>
+
+<!-- <div class="border m-4 p-4 font-weight-bold">
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolor excepturi
   blanditiis, saepe facere ipsum nisi veniam. Perspiciatis quia tenetur
   provident earum voluptatibus vero aliquid, necessitatibus, voluptate ut, cum
   aperiam?
+</div> -->
+<!-- 
+<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
 </div>
+<div class="alert alert-secondary" role="alert">
+  A simple secondary alert—check it out!
+</div>
+<div class="alert alert-success" role="alert">
+  A simple success alert—check it out!
+</div>
+<div class="alert alert-danger" role="alert">
+  A simple danger alert—check it out!
+</div>
+<div class="alert alert-warning" role="alert">
+  A simple warning alert—check it out!
+</div>
+<div class="alert alert-info" role="alert">
+  A simple info alert—check it out!
+</div>
+<div class="alert alert-light" role="alert">
+  A simple light alert—check it out!
+</div>
+<div class="alert alert-dark" role="alert">
+  A simple dark alert—check it out!
+</div> -->
+
+
+
+
+<!-- 
+<button
+  type="button"
+  class="btn btn-outline-secondary mr-2"
+  placement="top"
+  ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  popoverTitle="Popover on top"
+>
+  Popover on top
+</button>
+
+<hr />
+
+<p>Custom rating template provided as child element</p>
+
+<ngb-rating [(rate)]="currentRate">
+  <ng-template let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3"
+      >&#9733;</span
+    >
+  </ng-template>
+</ngb-rating>
+<hr />
+<pre>Rate: <b>{{currentRate}}</b></pre>
+
+<hr />
+
+<ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+<button
+  class="btn btn-sm btn-outline-{{ meridian ? 'success' : 'danger' }}"
+  (click)="toggleMeridian()"
+>
+  Meridian - {{ meridian ? "ON" : "OFF" }}
+</button>
+<hr />
+<pre>Selected time: {{ time | json }}</pre>
+
+<ngb-toast *ngIf="show" header="Click my close icon →" [autohide]="false" (hidden)="close()">
+  If you close me, I will automatically re-appear after a few seconds.
+</ngb-toast>
+<p *ngIf="!show">I'll be back!</p> -->

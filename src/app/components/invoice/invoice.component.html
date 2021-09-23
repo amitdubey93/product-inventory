@@ -2,6 +2,11 @@
 <p class="border p-2 m-2 bg-light text-primary">
   error: {{ invoiceForm.controls.customerName.errors | json }}
 </p>-->
+<p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form value:</span> {{ invoiceForm.value | json }}</p>
+<p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form status:</span> {{ invoiceForm.status | json }}</p>
+<!-- <p class="border p-2 m-2 bg-light text-primary">Form value: {{ invoiceForm.controls.products.value | json }}</p> -->
+
+<!-- make all p a component -->
 
 <form [formGroup]="invoiceForm" class="needs-validation">
   <div class="form-row">
@@ -40,10 +45,10 @@
         Looks Good!
       </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <!-- <div class="col-md-4 mb-3">
       <label for="customerName">Customer Name</label>
       <input type="text" class="form-control">
-    </div>
+    </div> -->
   </div>
 
   <div class="form-row mt-2">
@@ -147,8 +152,6 @@
   </button>
 </form>
 
-<!-- <p>Form value: {{ invoiceForm.value | json }}</p>
-<p>Form status: {{ invoiceForm.status | json }}</p> -->
-<!-- <p>Form value: {{ invoiceForm.controls.products.value | json }}</p> -->
+
 
 

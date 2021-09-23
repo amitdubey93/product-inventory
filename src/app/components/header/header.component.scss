@@ -1,23 +1,25 @@
-$base-color: #4ac73c;
-
-a{
+/* $base-color: gainsboro;
+$base-green-color: #4ac73c;
+$base-blue-color: #007bff;
+.my-nav-link {
   padding: 10px;
   text-decoration: none;
-  // color:#4ac73c;
+  color:$base-blue-color !important;
   font-size: medium;
-}
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+} */
+/* .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: $base-blue-color;
   background-color: $base-color;
-}
-a:hover{
-  color:#60ff0eb8;
-}
+  font-weight: 500;
+} */
+/* a:hover{
+  color:gainsboro !;
+} */
 
-.navbar{
-  justify-content: space-between;
-}
-header{
-  color: white;
+header {
+  // color: white;
   margin-bottom: 2rem;
+}
+.navbar-toggler-icon {
+  background-image: url(../../../assets/img/toggle-icon.svg);
 }

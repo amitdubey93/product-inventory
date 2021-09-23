@@ -1,4 +1,4 @@
-.my-alert{
+/* .my-alert{
     padding: 1.5rem;
     margin: 1.5rem;
     border-width: 1px;
@@ -8,3 +8,42 @@
     color:#4ac73c;
     background-color: azure;
 }
+
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  } */
+
+//bootstrap setup
+// @import "~bootstrap/scss/bootstrap";
+
+// $border-width: 3px;
+/* 
+$color: (
+  "custom-color": #900
+); */
+
+/* @function color($key: "blue") {
+  @return map-get($colors, $key);
+} */
+
+
+// .my-alert {
+//   // color: theme-color-level(primary, -10);
+//   // color: gray("100");
+//   // background-color: theme-color("dark");
+//   border-radius: calc($border-radius - $border-width);
+//   border: $border-width solid black;
+//   color: $primary;
+//   box-shadow: $box-shadow-lg;
+//   font-size: $font-size-lg;
+// }

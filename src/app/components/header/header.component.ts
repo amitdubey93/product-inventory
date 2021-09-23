@@ -7,9 +7,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  active = "invoice";
   collapsed = true;
-     
+
+  constructor(public route: ActivatedRoute) { }
+ 
+  ngOnInit(): void {
+  }
+  
   links = [
     { title: 'Invoice', rl:'invoice',fragment:'invoice' },
     { title: 'Product List', rl:'productlist',fragment:'productlist'},
@@ -17,11 +22,8 @@ export class HeaderComponent implements OnInit {
     // { title: 'Demo', rl:'demo',fragment:'demo'},
     { title: 'Alert', rl:'alert',fragment:'alert'}
   ];
-  constructor(public route: ActivatedRoute) { }
- 
-  ngOnInit(): void {
-  }
-
+  
+  
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
   }

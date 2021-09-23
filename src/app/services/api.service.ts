@@ -18,4 +18,5 @@ export class ApiService {
   addProduct(product:any){
     return this.http.post(this.BASE_URL,product);
   }
+  
 }
