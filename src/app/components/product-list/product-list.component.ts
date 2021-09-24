@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/domain/model';
-import { ApiService } from 'src/app/services/api.service';
+import { ProductApiService } from '../../services/product-api.service';
+
 
 
 
@@ -13,7 +14,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class ProductListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'productName', 'quantity', 'price'];
   products: Product[] = [];
-  constructor(private api: ApiService) {}
+  constructor(private _productApi: ProductApiService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -21,8 +22,8 @@ export class ProductListComponent implements OnInit {
   
 
   getAllProducts() {
-     this.api.getAllProducts().subscribe(
-       (products)=>{
+     this._productApi.getAllProducts().subscribe(
+       (products: Product[])=>{
          this.products = products;
          console.log(this.products);
          

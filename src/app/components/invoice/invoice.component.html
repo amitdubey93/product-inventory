@@ -18,9 +18,7 @@
         formControlName="customerName"
         id="customerName"
         [ngClass]="{
-          'is-invalid': submitted && invoiceForm.controls.customerName.errors
-        }"
-        [ngClass]="{
+          'is-invalid': submitted && invoiceForm.controls.customerName.errors,
           'is-valid': submitted && !invoiceForm.controls.customerName.errors
         }"
       />
@@ -51,7 +49,7 @@
     </div> -->
   </div>
 
-  <div class="form-row mt-2">
+  <div class="form-row mt-2 ">
     <table class="table table-hover">
       <caption>
         Product Details in Order Invoice

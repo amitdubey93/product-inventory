@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyAlertComponent } from './components/my-alert/my-alert.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MyAlertComponent } from './components/my-alert/my-alert.component';
     RowDirective,
     DemoComponent,
     MyAlertComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,

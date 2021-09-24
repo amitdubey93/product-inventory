@@ -16,7 +16,7 @@ import {
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Product } from 'src/app/domain/model';
-import { ApiService } from 'src/app/services/api.service';
+import { InvoiceApiService } from '../../services/invoice-api.service';
 
 //const resolvedPromise = Promise.resolve(null);
 
@@ -27,7 +27,6 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class InvoiceComponent implements OnInit {
   filteredProductNames!: Observable<Product[]>;
-  //orderServices = ['One', 'two', 'three'];
   invoiceForm!: FormGroup;
   submitted: boolean = false;
   total = 0;
@@ -49,8 +48,8 @@ export class InvoiceComponent implements OnInit {
   //productNameOp = new FormControl('', Validators.required);
   constructor(
     private _fb: FormBuilder,
-    private ref: ChangeDetectorRef,
-    private api: ApiService
+    private _ref: ChangeDetectorRef,
+    private _invoiceApi: InvoiceApiService
   ) {}
 
   ngOnInit(): void {
@@ -73,7 +72,7 @@ export class InvoiceComponent implements OnInit {
         );
         this.total += parsed;
         this.invoiceForm.controls.total.setValue(this.total);
-        this.ref.detectChanges();
+        this._ref.detectChanges();
       });
     });
   }
@@ -113,13 +112,13 @@ export class InvoiceComponent implements OnInit {
     if (this.invoiceForm.invalid) {
       return;
     }
-    /* this.apiService.addProduct(this.productForm.value).subscribe(
+    this._invoiceApi.addInvoice(this.invoiceForm.value).subscribe(
       (res:any)=>{
         console.log('res',res);
         
       },(error:any)=>{
         console.log("error",error);
-      }) */
+      })
   }
 
   addNewProduct() {

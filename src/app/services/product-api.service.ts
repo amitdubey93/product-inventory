@@ -7,16 +7,15 @@ import { Product } from '../domain/model';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class ProductApiService {
   BASE_URL = 'http://localhost:8080/api/product/';
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   getAllProducts():Observable<Product[]> {
     console.log(this.BASE_URL);
-    return this.http.get<Product[]>(this.BASE_URL);
+    return this._http.get<Product[]>(this.BASE_URL);
   }
   addProduct(product:any){
-    return this.http.post(this.BASE_URL,product);
+    return this._http.post(this.BASE_URL,product);
   }
-  
 }
