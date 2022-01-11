@@ -2,8 +2,8 @@
 <p class="border p-2 m-2 bg-light text-primary">
   error: {{ invoiceForm.controls.customerName.errors | json }}
 </p>-->
-<p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form value:</span> {{ invoiceForm.value | json }}</p>
-<p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form status:</span> {{ invoiceForm.status | json }}</p>
+<!-- <p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form value:</span> {{ invoiceForm.value | json }}</p> -->
+<!-- <p class="border p-2 m-2 bg-light text-primary"><span class="text-dark">Form status:</span> {{ invoiceForm.status | json }}</p> -->
 <!-- <p class="border p-2 m-2 bg-light text-primary">Form value: {{ invoiceForm.controls.products.value | json }}</p> -->
 
 <!-- make all p a component -->
@@ -79,11 +79,18 @@
               type="text"
               class="form-control"
               formControlName="productName"
-            />
+              [matAutocomplete]="auto"
+              />
+              <!-- (keyup)="matAutocomplete(i)" -->
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProduct">
+              <mat-option *ngFor="let option of options[i]" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </td>
           <td>
             <input
-              type="text"
+              type="number"
               class="form-control"
               formControlName="price"
               (keyup)="calc(i)"
@@ -91,7 +98,7 @@
           </td>
           <td>
             <input
-              type="text"
+              type="number"
               class="form-control"
               formControlName="quantity"
               (keyup)="calc(i)"
@@ -99,7 +106,7 @@
           </td>
           <td>
             <input
-              type="text"
+              type="number"
               class="form-control"
               formControlName="subtotal"
               (keyup)="calc(i)"
@@ -132,7 +139,7 @@
           <td></td>
           <td>
             <input
-              type="text"
+              type="number"
               class="form-control"
               formControlName="total"
               readonly

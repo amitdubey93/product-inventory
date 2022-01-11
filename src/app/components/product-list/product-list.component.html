@@ -1,4 +1,84 @@
-<!-- <table class="table">
+<div *ngIf="pError" class="alert alert-danger" role="alert">
+  {{msg}}
+</div>
+
+<div *ngIf="pDeleted" class="alert alert-danger" role="alert">
+  {{msg}}
+</div>
+
+<div *ngIf="!pError" class="form-row">
+  <div class="form-group col-md-6">
+    <label for="filter" class="form-label"><span class="font-weight-bolder">Filter</span></label>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      (keyup)="applyFilter($event)"
+    />
+  </div>
+</div>
+
+<table *ngIf="!pError" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td mat-cell *matCellDef="let element"> 
+        <span>
+          <img
+              src="/assets/img/add.svg"
+              alt=""
+              width="24"
+              height="24"
+              (click)="updateProduct(element.id)"
+            />
+            <img
+              src="/assets/img/remove.svg"
+              alt=""
+              width="24"
+              height="24"
+              (click)="deleteProduct(element.id)"
+            />
+        </span>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator *ngIf="!pError" [length]="productsList.length"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+  </mat-paginator>
+
+  <!-- <table class="table">
     <thead>
         <tr>
             <th>#</th>
@@ -16,42 +96,4 @@
         </tr>
     </tbody>
 </table> -->
-
-<table mat-table [dataSource]="products" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="productName">
-      <th mat-header-cell *matHeaderCellDef> Product Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef> Quantity </th>
-      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
-                 aria-label="Select page of periodic elements">
-  </mat-paginator> -->
-  
   

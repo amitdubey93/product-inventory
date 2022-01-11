@@ -12,10 +12,13 @@ export class ProductApiService {
   constructor(private _http: HttpClient) {}
 
   getAllProducts():Observable<Product[]> {
-    console.log(this.BASE_URL);
+    //console.log(this.BASE_URL);
     return this._http.get<Product[]>(this.BASE_URL);
   }
   addProduct(product:any){
     return this._http.post(this.BASE_URL,product);
+  }
+  deleteProduct(id:number){
+    return this._http.delete(this.BASE_URL+`${id}`,{ responseType: 'text' });
   }
 }

@@ -1,0 +1,35 @@
+[33mcommit 3359cc6255378e874875e61a2b686f9a604b69a5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Sat Sep 25 03:54:07 2021 +0530
+
+    saved Invoice form and changed product save ui
+
+[33mcommit 1643c12ba530bc595f839343a4fce844a945e308[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Fri Sep 24 04:41:19 2021 +0530
+
+    refactor ui header | bootstrap scss theming
+
+[33mcommit 84b4fbfe1fcb93ce068623c5cbeaef4e5e93469d[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Thu Sep 23 04:46:22 2021 +0530
+
+    Added bootstrap again and fixed layout style
+
+[33mcommit e3ed78e53fb086a3af19baf1a0ab8a4b9c6c8309[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Wed Sep 22 18:03:59 2021 +0530
+
+    trying dynamic autocomplete and calculations
+
+[33mcommit c0089406375e988949524b82ecdea4acd95cde46[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Wed Sep 22 01:41:00 2021 +0530
+
+    invoice dynamic row calculation done
+
+[33mcommit c3a787ef656221abb02df014ea3c1c50a8ec5b6f[m
+Author: Amit Dubey <ad.manjeet@gmail.com>
+Date:   Mon Sep 13 15:18:26 2021 +0530
+
+    first commit

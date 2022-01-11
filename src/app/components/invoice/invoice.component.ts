@@ -15,10 +15,13 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Product } from 'src/app/domain/model';
+import { Product } from '../../domain/model';
 import { InvoiceApiService } from '../../services/invoice-api.service';
 
-//const resolvedPromise = Promise.resolve(null);
+export interface ProductRow {
+  productName: string;
+  price: string;
+}
 
 @Component({
   selector: 'app-invoice',
@@ -26,42 +29,52 @@ import { InvoiceApiService } from '../../services/invoice-api.service';
   styleUrls: ['./invoice.component.scss'],
 })
 export class InvoiceComponent implements OnInit {
-  filteredProductNames!: Observable<Product[]>;
+  options: string[] | any = [];
+  filteredOptions: Observable<ProductRow[]>[] | any= [];
+
   invoiceForm!: FormGroup;
   submitted: boolean = false;
   total = 0;
-  productList: Product[] = [
-    {
-      id: 1,
-      productName: 'mobile',
-      quantity: 1,
-      price: 1,
-    },
-    {
-      id: 2,
-      productName: 'laptop',
-      quantity: 1,
-      price: 1,
-    },
-  ];
-
-  //productNameOp = new FormControl('', Validators.required);
   constructor(
     private _fb: FormBuilder,
     private _ref: ChangeDetectorRef,
     private _invoiceApi: InvoiceApiService
-  ) {}
+  ) {
+    
+  }
 
-  ngOnInit(): void {
+  createForm(){
     this.invoiceForm = this._fb.group({
-      customerName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(7)]],
+      customerName: [
+        '',
+        [Validators.required, Validators.minLength(5), Validators.maxLength(7)],
+      ],
       products: this._fb.array([
         this.addProductGroup(),
         this.addProductGroup(),
       ]),
       total: [''],
     });
+
     
+  }
+  ngAfterViewInit():void{
+    this.ManageNameControl(0);
+    this.ManageNameControl(1);
+  }
+  ngOnInit(): void {
+    this.createForm();
+
+    this._invoiceApi.getAllProductName().subscribe(
+      (res: any) => {
+        console.log('Autocomplete Data: ', res);
+        this.options = res;
+      },
+      (err) => {
+        console.log('error occured: ', err);
+      }
+    );
+
     //this.invoiceForm.valueChanges.subscribe(console.log);
     this.invoiceForm.get('products')?.valueChanges.subscribe((values) => {
       this.total = 0;
@@ -76,8 +89,44 @@ export class InvoiceComponent implements OnInit {
       });
     });
   }
-  
- 
+
+  ManageNameControl(index: number) {
+    var arrayControl = this.invoiceForm.get('products') as FormArray;
+    //console.log("log from manage; ",index);
+    console.log(arrayControl.at(index).get('productName'));
+    
+    this.filteredOptions[index] = arrayControl.at(index).get('productName')?.valueChanges
+    .pipe(
+      startWith<string | ProductRow>(''),
+      map(value => typeof value === 'string' ? value : value.productName),
+      map(name => name ? this._filter(name) : this.options.slice())
+      );
+  }
+
+  displayProduct(productRow: ProductRow): string {
+    if (productRow) {
+        return `${productRow.productName} ${productRow.price}`;
+    }
+    return '';
+}
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter((option: string) => option.toLowerCase().includes(filterValue));
+  }
+
+  matAutocomplete(i: string | number) {
+    //console.log(this.invoiceForm);
+    console.log(this.productsArray.get(i.toString()));
+
+    /* this.filteredOptions = this.productsArray.get(i.toString())?.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      ); */
+  }
+
+
   calc(i: string | number) {
     //console.log("price",this.invoiceForm.value.products[i].price);
     //console.log("quantity",this.invoiceForm.value.products[i].quantity);
@@ -99,7 +148,7 @@ export class InvoiceComponent implements OnInit {
       subtotal: [''],
     });
   }
-  
+
   trackByIndex(index: number, value: string) {
     return index;
   }
@@ -113,16 +162,20 @@ export class InvoiceComponent implements OnInit {
       return;
     }
     this._invoiceApi.addInvoice(this.invoiceForm.value).subscribe(
-      (res:any)=>{
-        console.log('res',res);
-        
-      },(error:any)=>{
-        console.log("error",error);
-      })
+      (res: any) => {
+        this.invoiceForm.reset();
+        this.submitted = false;
+        console.log('res', res);
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
   }
 
   addNewProduct() {
     this.productsArray.push(this.addProductGroup());
+    this.ManageNameControl(this.productsArray.length - 1);
   }
 
   removeProduct(i: number) {
@@ -141,6 +194,4 @@ export class InvoiceComponent implements OnInit {
     return <FormArray>this.invoiceForm.controls['products'];
     //return <FormArray>this.invoiceForm.get('products');
   }
-  
-  
 }

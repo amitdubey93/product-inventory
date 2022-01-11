@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductApiService } from '../../services/product-api.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
@@ -18,9 +18,9 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 })
 export class ProductAddComponent implements OnInit {
   productForm!: FormGroup;
-  submitted=false;
-  pSuccess=false;
-  pError=false;
+  submitted = false;
+  pSuccess = false;
+  pError = false;
   successMsg = '';
   //private service!:Subscription;
   //submitted:boolean=false;
@@ -43,23 +43,21 @@ export class ProductAddComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    //alert();
     if (this.productForm.invalid) {
       return;
     }
-    // this.service =
     this._productApiService.addProduct(this.productForm.value).subscribe(
       (res: any) => {
         console.log('res', res);
-        this.submitted=false;
+        this.submitted = false;
         this.pError = false;
         this.pSuccess = true;
         console.log(this.productForm.value);
-        
+
         this.successMsg = this.productForm.value.productName;
         this.openSnackBar();
         //this._router.navigate(['productlist']);
-        this.productForm.reset(); 
+        this.productForm.reset();
       },
       (error: any) => {
         console.log('error', error);
@@ -71,12 +69,10 @@ export class ProductAddComponent implements OnInit {
   /* ngOnDestroy(): void {
     this.service.unsubscribe();
   } */
-  durationInSeconds=2;
+  durationInSeconds = 2;
   openSnackBar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: this.durationInSeconds * 1000,
     });
   }
 }
-
-

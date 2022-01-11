@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     { title: 'Invoice', rl:'invoice',fragment:'invoice' },
     { title: 'Product List', rl:'productlist',fragment:'productlist'},
     { title: 'Product Add', rl:'productadd',fragment:'productadd'},
-    // { title: 'Demo', rl:'demo',fragment:'demo'},
+    { title: 'Login', rl:'login',fragment:'login'},
     { title: 'Alert', rl:'alert',fragment:'alert'}
   ];
   

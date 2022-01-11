@@ -9,12 +9,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
 
 const material = [
   MatToolbarModule,
   MatIconModule,
   MatTableModule,
   MatPaginatorModule,
+  MatSortModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,

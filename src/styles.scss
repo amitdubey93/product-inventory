@@ -9,17 +9,16 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 //bootstrap setup
 @import "~bootstrap/scss/bootstrap";
 
 // Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+// @import "../node_modules/bootstrap/scss/functions";
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/mixins";
 
 // Your variable overrides
-$body-bg: gainsboro;
+// $body-bg: gainsboro;
 /* $theme-colors: (
   "primary": #f12222,
   "success": #e9eef3,
@@ -29,15 +28,10 @@ $body-bg: gainsboro;
 // Bootstrap and its default variables
 
 // Optional
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/root";
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
 // etc
-
-
-
-
-
 
 /// bootstrap setup
 // @import "~bootstrap/scss/bootstrap";
@@ -53,14 +47,11 @@ $body-bg: gainsboro;
 
 // // @import "my-reset";
 
-
 // // setup angular material
 // @import "~@angular/material/theming";
 // // @include mat-core($my-typography);
 // // $my-theme: mat-light-theme($primary, $accent, $warn);
 // // @include angular-material-theme($my-theme);
-
-
 
 // @mixin generate-utilities($theme){
 //   $primary: map-get($theme, primary);
@@ -77,16 +68,14 @@ $body-bg: gainsboro;
 //   // }
 // }
 
-
 // // step no 3 ... my-alert.component.theme.scss
 // @mixin alert-theme($theme) {
 //   $primary: map-get($theme, primary);
 //   $accent: map-get($theme, accent);
 
-  
 // }
 
-// // step no 4 
+// // step no 4
 // .my-alert {
 //   // @include alert-theme($my-theme);
 //   background-color: mat-color($accent, 50);

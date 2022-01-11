@@ -1,3 +1,58 @@
+<!-- <p class="border p-2 m-2 bg-light text-primary">Form value: {{ productForm.value | json }}</p> -->
+<!-- <p class="border p-2 m-2 bg-light text-primary">Form status: {{ productForm.status | json }}</p> -->
+
+<div *ngIf="pSuccess" class="alert alert-primary" role="alert">
+  Product: <strong>[ </strong>{{successMsg}} <strong>]</strong> added successfully!
+</div>
+<div *ngIf="pError" class="alert alert-danger" role="alert">
+  SomeThing went wrong!
+</div>
+
+
+
+<form class="needs-validation" [formGroup]="productForm">
+  <div class="form-row">
+    <!-- <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-2"> -->
+    <div class="form-group col-sm-6 col-md-4">
+      <label for="productName" class="form-label">Product Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="productName"
+        [ngClass]="{ 'is-invalid': submitted && f.productName.errors }"
+      />
+      <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
+        <div *ngIf="f.productName.errors.required">Product Name is required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-6 col-md-4">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="quantity"
+        [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"
+      />
+      <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+        <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-6 col-md-4">
+      <label for="price" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="price"
+        [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+      />
+      <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+        <div *ngIf="f.price.errors.required">Price is required</div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+</form>
+
 <!-- <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   
   <mat-form-field appearance="outline">
@@ -26,61 +81,3 @@
   
   <button type="submit" mat-raised-button color="primary">Submit</button>
 </form> -->
-
-<!-- <p class="border p-2 m-2 bg-light text-primary">Form value: {{ productForm.value | json }}</p> -->
-<!-- <p class="border p-2 m-2 bg-light text-primary">Form status: {{ productForm.status | json }}</p> -->
-
-<div *ngIf="pSuccess" class="alert alert-primary" role="alert">
-  Product: <strong>[ </strong>{{successMsg}} <strong>]</strong> added successfully!
-</div>
-<div *ngIf="pError" class="alert alert-danger" role="alert">
-  SomeThing went wrong!
-</div>
-
-
-
-<form class="needs-validation" [formGroup]="productForm">
-  <div class="form-row">
-    <!-- <div class="form-group col-sm-6 col-md-4 col-lg-3 col-xl-2"> -->
-    <div class="form-group col-sm-6 col-md-4">
-      <label for="productName" class="form-label">Product Name</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="productName"
-        [ngClass]="{ 'is-invalid': submitted && f.productName.errors }"
-        required
-      />
-      <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
-        <div *ngIf="f.productName.errors.required">Product Name is required</div>
-      </div>
-    </div>
-    <div class="form-group col-sm-6 col-md-4">
-      <label for="quantity" class="form-label">Quantity</label>
-      <input
-        type="number"
-        class="form-control"
-        formControlName="quantity"
-        [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"
-        required
-      />
-      <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
-        <div *ngIf="f.quantity.errors.required">Quantity is required</div>
-      </div>
-    </div>
-    <div class="form-group col-sm-6 col-md-4">
-      <label for="price" class="form-label">Price</label>
-      <input
-        type="number"
-        class="form-control"
-        formControlName="price"
-        [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
-        required
-      />
-      <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
-        <div *ngIf="f.price.errors.required">Price is required</div>
-      </div>
-    </div>
-  </div>
-  <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
-</form>

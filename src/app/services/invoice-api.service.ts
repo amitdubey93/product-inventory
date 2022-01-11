@@ -13,5 +13,8 @@ export class InvoiceApiService {
     return this._http.post(this.BASE_URL,invoice);
   }
 
+  getAllProductName(){
+    return this._http.get("http://localhost:8080/api/product-name-list");
+  }
   
 }
